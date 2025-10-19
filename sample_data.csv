@@ -1,0 +1,3 @@
+Category,Brand,Owner,YearSales_2025,YearGP_2025,MonthSales_2025,MonthGP_2025,SalesGrowth_2026%,GPGrowth_2026%,Notes
+VGA,PNY,Allen,430000000,30960000,0,0,0.10,0.20,AI/GTA6 需求
+CPU,AMD,Team A,160000000,25920000,0,0,-0.10,-0.10,Zen5 轉換期保守
