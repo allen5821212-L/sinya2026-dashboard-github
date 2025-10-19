@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SINYA Annual P&L Dashboard</title>
+  <title>SINYA Annual P&L Dashboard v4</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="topbar">
-    <h1>SINYA Annual P&amp;L Dashboard</h1>
+    <h1>SINYA Annual P&amp;L Dashboard v4</h1>
     <div class="actions">
       <label class="file-btn">
         載入 CSV
@@ -36,7 +36,7 @@
         </div>
         <div class="col">
           <label>快速搜尋</label>
-          <input id="searchBox" type="search" placeholder="輸入關鍵字（Category/Brand/Owner）">
+          <input id="searchBox" type="search" placeholder="輸入關鍵字（Category/Brand/Owner/Notes）">
         </div>
       </div>
       <div id="kpis" class="kpi-grid">
@@ -44,6 +44,7 @@
         <div class="kpi"><div class="kpi-label">2025 毛利額合計</div><div class="kpi-value" id="kpiGP2025">—</div></div>
         <div class="kpi"><div class="kpi-label">2026 營業額（情境）</div><div class="kpi-value" id="kpiSales2026">—</div></div>
         <div class="kpi"><div class="kpi-label">2026 毛利額（情境）</div><div class="kpi-value" id="kpiGP2026">—</div></div>
+        <div class="kpi"><div class="kpi-label">2026 毛利率（加權）</div><div class="kpi-value" id="kpiGPMargin2026">—</div></div>
         <div class="kpi"><div class="kpi-label">營收 YoY</div><div class="kpi-value" id="kpiSalesYoY">—</div></div>
         <div class="kpi"><div class="kpi-label">毛利 YoY</div><div class="kpi-value" id="kpiGPYoY">—</div></div>
       </div>
@@ -60,18 +61,19 @@
               <th data-key="Owner">Owner</th>
               <th data-key="YearSales_2025" class="num">YearSales_2025</th>
               <th data-key="YearGP_2025" class="num">YearGP_2025</th>
-              <th data-key="MonthSales_2025" class="num">MonthSales_2025</th>
-              <th data-key="MonthGP_2025" class="num">MonthGP_2025</th>
               <th data-key="SalesGrowth_2026%" class="num">SalesGrowth_2026%</th>
               <th data-key="GPGrowth_2026%" class="num">GPGrowth_2026%</th>
               <th data-key="Notes">Notes</th>
               <th class="num">GPMargin_2025</th>
+              <th class="num">Sales_2026</th>
+              <th class="num">GP_2026</th>
+              <th class="num">GPMargin_2026</th>
             </tr>
           </thead>
           <tbody></tbody>
         </table>
       </div>
-      <p class="hint">欄位需求（CSV 標頭請一致）：Category, Brand, Owner, YearSales_2025, YearGP_2025, MonthSales_2025, MonthGP_2025, SalesGrowth_2026%, GPGrowth_2026%, Notes</p>
+      <p class="hint">欄位需求（CSV 標頭請一致）：Category, Brand, Owner, YearSales_2025, YearGP_2025, SalesGrowth_2026%, GPGrowth_2026%, Notes</p>
     </section>
 
     <section class="panel">
@@ -79,7 +81,7 @@
       <ul class="bullets">
         <li>YearSales_2025 = 0 且 YearGP_2025 &gt; 0（分母為 0）</li>
         <li>YearGP_2025 &lt; 0（負毛利）</li>
-        <li>GPMargin_2025 &gt; 60%（可能異常高）</li>
+        <li>GPMargin_2025 &gt; 60% 或 GPMargin_2026 &gt; 60%（可能異常高）</li>
       </ul>
       <div class="table-wrap">
         <table id="anomTable">
@@ -88,7 +90,8 @@
               <th>Category</th><th>Brand</th><th>Owner</th>
               <th class="num">YearSales_2025</th><th class="num">YearGP_2025</th>
               <th class="num">GPMargin_2025</th>
-              <th class="num">SalesGrowth_2026%</th><th class="num">GPGrowth_2026%</th>
+              <th class="num">Sales_2026</th><th class="num">GP_2026</th>
+              <th class="num">GPMargin_2026</th>
               <th>Notes</th>
             </tr>
           </thead>
@@ -99,7 +102,7 @@
   </main>
 
   <footer class="footer">
-    <span>© 2025 SINYA Dashboard • 用 CSV 更新即可在 GitHub Pages 即時呈現</span>
+    <span>© 2025 SINYA Dashboard v4 • CSV 匯入、情境計算、2026 毛利率自動化</span>
   </footer>
 
   <script src="app.js"></script>
